@@ -1,0 +1,15 @@
+-- Precipitation matrix:
+
+Precipitation states:
+  1. no snow
+  2. 0 < s <= 0.1 in
+  3. 0.1 < s <= 0.2 in
+  .
+  .
+  .
+  11. 0.9 < s <= 1 in
+  12. 1 < s <= 2 in
+  .
+  .
+  .
+  22. 11 < s <= 12 in
