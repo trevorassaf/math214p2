@@ -2,7 +2,8 @@
 % (importing, parsing, constants and shit)
 
 % Read in data
-raw_data = importdata('full_data.txt');
+FILE_NAME = 'AnnArbor_Weather';
+raw_data = importdata(strcat('../data/', FILE_NAME, '.txt'))
 raw_data = raw_data.textdata;
 dates = raw_data(:,1);
 temperature_data = raw_data(:,3)
@@ -11,7 +12,7 @@ num_days = length(dates) - 1;
 
 % Temperature transition matrix constants
 TEMP_LOW = -10;
-TEMP_HIGH = 50;
+TEMP_HIGH = 80;
 TEMP_INTERVAL_SIZE = 5;
 NUM_TEMP_INTERVALS = (TEMP_HIGH - TEMP_LOW) / TEMP_INTERVAL_SIZE;
 
@@ -62,5 +63,15 @@ for temp_interval_idx = 1:NUM_TEMP_INTERVALS
     temp_matrix(:, temp_interval_idx) = temp_matrix(:, temp_interval_idx) / temp_interval_count;
   end
 end
+
+% Find equilibrium distribution vector
+equilibrium_distribution_matrix = temp_matrix^30;
+
+% Display results
 temp_matrix
-xlswrite('../results/temp_matrix.xls', temp_matrix);
+equilibrium_distribution_matrix
+
+% Write matrices
+
+xlswrite(strcat('../results/', FILE_NAME, '.xls'), temp_matrix);
+xlswrite(strcat('../results/', FILE_NAME, '_equilibrium.xls'), equilibrium_distribution_matrix);
