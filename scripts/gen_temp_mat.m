@@ -63,3 +63,4 @@ for temp_interval_idx = 1:NUM_TEMP_INTERVALS
   end
 end
 temp_matrix
+xlswrite('../results/temp_matrix.xls', temp_matrix);
