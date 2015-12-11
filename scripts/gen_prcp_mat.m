@@ -2,7 +2,7 @@
 % (importing, parsing, constants and shit)
 
 % Read in data
-raw_data = importdata('test_data.txt');
+raw_data = importdata('full_data.txt');
 raw_data = raw_data.textdata;
 dates = raw_data(:,1);
 precipitation_amounts = raw_data(:,20);
