@@ -17,7 +17,14 @@ function weather_state_idx = get_snowfall_state_index(precipitation_amounts, wea
   if is_snowing
     % Get amount of snowfall
     precipitation_amounts(day_idx);
-    snowfall = str2double(precipitation_amounts(day_idx)) * RAIN_TO_SNOWFALL_CONVERSION;
+    precipitation_amount_str = precipitation_amounts{day_idx};
+    
+    if precipitation_amount_str == 'T'
+      weather_state_idx = 2;
+      return
+    end
+
+    snowfall = str2double(precipitation_amount_str) * RAIN_TO_SNOWFALL_CONVERSION;
 
     if snowfall > MAX_SNOWFALL
       snowfall = MAX_SNOWFALL;
